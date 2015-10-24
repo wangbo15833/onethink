@@ -17,10 +17,10 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8 */;
 
 --
--- 数据库: `onethink_trunk`
+-- 数据库: `onethink_test`
 --
-CREATE DATABASE IF NOT EXISTS `onethink_trunk` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
-USE `onethink_trunk`;
+CREATE DATABASE IF NOT EXISTS `onethink_test` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+USE `onethink_test`;
 
 -- --------------------------------------------------------
 
