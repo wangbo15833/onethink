@@ -111,4 +111,8 @@ class ArticleController extends HomeController {
 		}
 	}
 
+	public function liuyan(){
+		$this->display();
+	}
+
 }
