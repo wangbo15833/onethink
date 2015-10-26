@@ -28,21 +28,21 @@ class Article extends TagLib{
 
 	public function _list($tag, $content){
 		$name   = $tag['name'];
-		$cate   = $tag['category'];
-		$child  = empty($tag['child']) ? 'false' : $tag['child'];
-		$row    = empty($tag['row'])   ? '10' : $tag['row'];
-		$field  = empty($tag['field']) ? 'true' : $tag['field'];
-
-		$parse  = '<?php ';
-		$parse .= '$category=D(\'Category\')->getChildrenId('.$cate.');';
-		$parse .= '$__LIST__ = D(\'Document\')->page(!empty($_GET["p"])?$_GET["p"]:1,'.$row.')->lists(';
-		$parse .= '$category, \'`level` DESC,`id` DESC\', 1,';
-		$parse .= $field . ');';
-		$parse .= ' ?>';
-		$parse .= '<volist name="__LIST__" id="'. $name .'">';
-		$parse .= $content;
-		$parse .= '</volist>';
-		return $parse;
+	        	$cate   = $tag['category'];
+	        	$child  = empty($tag['child']) ? 'false' : $tag['child'];
+	        	$row    = empty($tag['row'])   ? '10' : $tag['row'];
+	        	$field  = empty($tag['field']) ? 'true' : $tag['field'];
+	        	$parse  = '<?php  if('.$child.')';
+	        	$parse .= '$category=D(\'Category\')->getChildrenId('.$cate.');';
+	        	$parse .= 'else $category='.$cate.';';
+	        	$parse .= '$__LIST__ = D(\'Document\')->page(!empty($_GET["p"])?$_GET["p"]:1,'.$row.')->lists(';
+	        	$parse .= '$category, \'`level` DESC,`id` DESC\', 1,';
+	        	$parse .= $field . ');';
+	        	$parse .= ' ?>';
+	        	$parse .= '<volist name="__LIST__" id="'. $name .'">';
+	        	$parse .= $content;
+	        	$parse .= '</volist>';
+	        	return $parse;
 	}
 
 	/* 推荐位列表 */

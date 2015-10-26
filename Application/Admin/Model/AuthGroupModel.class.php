@@ -310,6 +310,20 @@ class AuthGroupModel extends Model {
         return $this->checkId('Category',$cid, '以下分类id不存在:');
     }
 
+    /**
+     * 返回用户拥有管理权限的分类id列表
+     *
+     * @param int     $uid  用户id
+     * @return array
+     * 
+     *  array(2,4,8,13)
+     *
+     * @author Lynx <492948155@qq.com>
+     */
+    static public function getAuthModels($uid){
+        return self::getAuthExtend($uid,self::AUTH_EXTEND_MODEL_TYPE,'AUTH_CATEGORY');
+    }
+
 
 }
 
