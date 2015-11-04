@@ -1,0 +1,27 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>秦皇岛市鑫果心理咨询研究院</title>
+        <link href="/Public/static/bootstrap-3.3.5-dist/css/bootstrap.min.css" rel="stylesheet">
+        <script type="text/javascript" src="/Public/static/jquery-1.10.2.min.js"></script>
+        <script type="text/javascript" src="/Public/static/bootstrap-3.3.5-dist/js/bootstrap.min.js"></script>
+
+    </head>
+
+    <body>
+    <h3>无分页文章列表示例</h3>
+    <ul class="list-group">
+        <Article:listnopage name="article" category="'2'"  row="5">
+
+                            <li class="list-group-item" >
+                                    
+                                    <a href="{:U('Article/detail?id='.$article['id'])}">
+                                    {$article.title}
+                                    </a>
+                            </li>
+            </Article:listnopage>
+        </ul>
+    </body>
+</html>

@@ -24,6 +24,7 @@ class Article extends TagLib{
 		'page'     => array('attr' => 'cate,listrow', 'close' => 0), //列表分页
 		'position' => array('attr' => 'pos,cate,limit,filed,name', 'close' => 1), //获取推荐位列表
 		'list'     => array('attr' => 'name,category,child,page,row,field', 'close' => 1), //获取指定分类列表
+		'listnopage'=>array('attr'=>'name,category,row,field'),//无分页获取指定分类列表
 	);
 
 	public function _list($tag, $content){
@@ -43,6 +44,23 @@ class Article extends TagLib{
 	        	$parse .= $content;
 	        	$parse .= '</volist>';
 	        	return $parse;
+	}
+
+	public function _listnopage($tag, $content){
+		$name   = $tag['name'];
+		$cate   = $tag['category'];
+		$row    = empty($tag['row'])   ? '10' : $tag['row'];
+		$field  = empty($tag['field']) ? 'true' : $tag['field'];
+
+		$parse .= '<?php $category='.$cate.';';
+		$parse .= '$__LIST__ = D(\'Document\')->page(1,'.$row.')->lists(';
+		$parse .= '$category, \'`level` DESC,`id` DESC\', 1,';
+		$parse .= $field . ');';
+		$parse .= ' ?>';
+		$parse .= '<volist name="__LIST__" id="'. $name .'">';
+		$parse .= $content;
+		$parse .= '</volist>';
+		return $parse;
 	}
 
 	/* 推荐位列表 */

@@ -23,6 +23,7 @@ class DemoController extends AdminController {
 		$this->display();
 	}
 
+
 	public function add(){
 		$this->display();
 	}
@@ -41,4 +42,37 @@ class DemoController extends AdminController {
 		            $this->success($res['id']?'更新成功':'新增成功', Cookie('__forward__'));
 		}
 	}
+
+	public function update(){
+		$db=M('Demo');
+		$db->create();
+		$res=$db->save();
+		if(!$res)
+		{
+			$this->error('更新失败',Cookie('__forward__'));
+		}else{
+			$this->success('更新成功', Cookie('__forward__'));
+		}
+	}
+
+	public function edit(){
+		$id=I('id');
+		$db=M('Demo');
+		$result=$db->where('id='.$id)->find();
+		$this->assign('result',$result);
+		$this->display();		
+	}
+
+	public function del(){
+		$id=I('id');
+		$db=M('Demo');
+		$res=$db->where('id='.$id)->delete();
+		if(!$res)
+		{
+			$this->error('删除失败',Cookie('__forward__'));
+		}else{
+			$this->success('删除成功', Cookie('__forward__'));
+		}
+	}
+
 }

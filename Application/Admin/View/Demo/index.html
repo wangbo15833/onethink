@@ -57,7 +57,7 @@
                 <th class="row-selected row-selected"><input class="check-all" type="checkbox"/></th>
                 <th class="">编号</th>
                 <th class="">模型名称</th>
-                <th class="">型号</th>
+                <th class="">描述</th>
                 <th class="">状态</th>
                 <th class="">操作</th>
             </tr>
@@ -72,7 +72,7 @@
                 <td><span>{$vo.status}</span></td>
                 <td><a href="{:U('Demo/edit?id='.$vo['id'])}">编辑</a>
                     <a href="{:U('Demo/setStatus?ids='.$vo['id'].'&status='.abs(1-$vo['status']))}" class="ajax-get">{$vo.status|show_status_op}</a>
-                    <a href="{:U('Demo/setStatus?status=-1&ids='.$vo['id'])}" class="confirm ajax-get">删除</a>
+                    <a href="{:U('Demo/del?id='.$vo['id'])}" class="confirm ajax-get">删除</a>
                 </td>
             </tr>
             </volist>

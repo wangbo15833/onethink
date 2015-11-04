@@ -80,6 +80,10 @@ class MemberModel extends Model {
 
         session('user_auth', $auth);
         session('user_auth_sign', data_auth_sign($auth));
+        /*
+        在这里添加新的session字段
+        这里是会员登陆后的session字段
+         */
 
     }
 

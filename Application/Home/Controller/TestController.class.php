@@ -19,4 +19,9 @@ class TestController extends HomeController {
 		$this->display();
 	}
 
+
+	public function viewdemo(){
+		$this->display();
+	}
+
 }
