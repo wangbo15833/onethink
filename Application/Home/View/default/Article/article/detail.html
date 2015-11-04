@@ -27,6 +27,11 @@
         <!-- Contents
         ================================================== -->
         <section id="contents">{$info.content}</section>
+        <div class="pagination">
+        <ul>
+        	{$page_string}
+        </ul>
+    </div>
         <hr/>
         {:hook('documentDetailAfter',$info)}
     </div>

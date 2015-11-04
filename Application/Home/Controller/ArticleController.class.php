@@ -63,6 +63,15 @@ class ArticleController extends HomeController {
 		if(!$info){
 			$this->error($Document->getError());
 		}
+		$content_array=explode('##分页##',$info['content']);
+		if(count($content_array)>1){
+			$info['content']=$content_array[$p-1];
+			$parse="";
+			for($i=1;$i<=count($content_array);$i++){
+				$parse.="<li><a href=".U('Article/detail',array('id'=>$info['id'],'page'=>$i)).">".$i."</a></li>";
+			}
+			$this->assign('page_string',$parse);
+		}
 
 		/* 分类信息 */
 		$category = $this->category($info['category_id']);

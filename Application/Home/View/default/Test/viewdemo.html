@@ -23,5 +23,17 @@
                             </li>
             </Article:listnopage>
         </ul>
+
+        <h3>下载列表示例</h3>
+
+<ul class="list-group" style="margin-bottom: 15px;">
+            <Article:list name="article" category="39" child="false" page="1" row="5">
+            <li class="list-group-item">
+            <a href="{:U('File/download?id='.$article['id'])}">{$article.title|msubstr=###,0,15}</a>
+            </li>
+        </Article:list>
+            
+    </ul>
+
     </body>
 </html>
