@@ -29,22 +29,18 @@ class DemoController extends AdminController {
 	}
 
 	public function insert(){
-		$db=M('Demo');
-		$db->create();
-		$db->create_time=time();
-		$db->status=1;
-		$db->uid=$_SESSION['onethink_admin']['user_auth']['uid'];
-		$db->company_id=$_SESSION['onethink_admin']['company_id'];
-		$res=$db->add();
+
+		$Demo=D('Demo');
+		$res=$Demo->insert();
 		if(!$res){
-		            $this->error(D('Demo')->getError());
+		            $this->error($Demo->getError());
 		        }else{
 		            $this->success($res['id']?'更新成功':'新增成功', Cookie('__forward__'));
 		}
 	}
 
 	public function update(){
-		$db=M('Demo');
+		$db=D('Demo');
 		$db->create();
 		$res=$db->save();
 		if(!$res)

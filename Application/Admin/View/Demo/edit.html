@@ -11,6 +11,10 @@
 		<div class="controls"><input type="text" class="text input-medium" name="title"  value="{$result.title}"></div>
 	</div>
 	<div class="form-item cf">
+		<label class="item-label">报名截止日期</label>
+		<div class="controls"><input type="text" class="text input-large time" name="deadline"  value="{$result.deadline|time_format}"></div>
+	</div>
+	<div class="form-item cf">
 		<label class="item-label">模型描述</label>
 		<div class="controls">
                         <label class="textarea input-large">
@@ -85,6 +89,26 @@
 	        }
 	    }
 	</script>
+<link href="/Public/static/datetimepicker/css/datetimepicker.css" rel="stylesheet" type="text/css">
+<link href="/Public/static/datetimepicker/css/dropdown.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="/Public/static/datetimepicker/js/bootstrap-datetimepicker.min.js"></script>
+<script type="text/javascript" src="/Public/static/datetimepicker/js/locales/bootstrap-datetimepicker.zh-CN.js" charset="UTF-8"></script>
+<script type="text/javascript">
+
+$('#submit').click(function(){
+	$('#form').submit();
+});
+
+$(function(){
+    $('.time').datetimepicker({
+        format: 'yyyy-mm-dd hh:ii',
+        language:"zh-CN",
+        minView:2,
+        autoclose:true
+    });
+
+});
+</script>
 
 </block>
 
